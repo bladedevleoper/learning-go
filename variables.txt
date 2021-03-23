@@ -1,0 +1,168 @@
+Variables in go:
+----------------
+
+Agenda:
+-------
+
+1: Variable declaration
+2: Redeclaration and shadowing
+3: Visibility
+4: Naming conventions
+5: Type convertions
+
+
+
+------------------------------------------------------------------
+Go Structures things as we would read it:
+
+1: Variable Declaration
+
+//this will read varialbe i as an integer
+var i int 
+
+we can initialise the variable on one line (same way as any other programming language)
+
+var i int = 42
+
+//but we are making more work for our selves, by providing a data type to the variable
+//so we can basically declare the variable like this
+
+i := 42
+
+the go compiler will know what data type i is.
+
+When to use each one??
+
+//we can declare the variable but not assign anything at this point (so we can save this until we need to use it)
+var i int
+i = 42 //initialising the variable here by assigning a value
+
+// we can provide a declarative type to the variable, which will give us more control on its type
+// so we can change j to a float32 and then it will become a float 32 if we print this out
+var j int = 25
+
+//Go will then provide k to be a type of a int
+k := 99
+
+but if we decide that k was to be changed to a floating point to 99. Go will then assign float64 to k as its data type
+
+but if we reassign the variable to something else say 99 without the decimal it will still be a float64
+
+
+
+------------------------------------------------------------------------------------------------
+
+2. Varable Declaration
+
+we can declare variables at package level, which is outside of the main function. But we cannot use the following syntax:
+
+person := "James"
+
+we must use:
+
+var person string = "James"
+
+# Declaring block variables
+we can create a block of variables at package level:
+
+var actorName string = "James Jones"
+var companion string = "Laura Jones"
+var doctorNumber int = 3
+var season int = 11
+
+//but these become a little cluttered and in Go we want things to be nice an easy read, as the var keyword makes it cluttered
+
+//so we can declare a var block
+//we can show that these variables are related
+var (
+    actorName string = "James Jones"
+    companion string = "Laura Jones"
+    doctorNumber int = 3
+    season int = 11
+)
+
+//we can have multiple var blocks if we wanted
+var (
+    counter int = 0
+)
+
+Variable scope:
+
+if we have a variable at package level:
+
+package main
+
+var name string = "James"
+
+func main () {
+    var name string "Laura"
+
+    fmt.Println(name)
+}
+
+As we have two variables with the same name, they are at two different scopes, one at package level (package scope) and one at function level.
+
+if using the variable at function level (inner most scope) that will always take procedence over the package level, this is basically called shadowing.
+The name variable at package level is still avilable, but its being hidden by the name variable in the main function.
+
+
+#Note
+if declaring variables, they must be used in Go else you will get an error (compile time error).
+Which this will keep your application nice and clean.
+
+
+
+
+Naming conventions:
+
+There are two set of rules that you need to keep track of when naming variables in Go.
+
+1. How naming control Visibility of a variable
+2. naming conventions themselves
+
+lowercase variables means that they are scoped to this package (package level)
+
+uppercase variable name, this will tell the Go COmpiler to expose this variable outside of the package (global)
+There are 3 different Visibility levels in Go
+
+1 - lowercase first letter - this is at package level.
+2 - uppercase first letter - is exposed outside of the package (global scope) can be read by another package (exoported from the package and globally visable)
+3 - block scope (private scope) - for example the main function, any variables that are declared there is only visible in that scope.
+
+with acronyms such as Url, in Go it is best to keep them uppercase such as:
+
+var theURL string = "https://google.com"
+var theHTTP string "http"
+
+Pascal case or camelCase rules
+
+
+Type Convertions
+
+//to change a variables type, we must assign it to another variable
+var i int = 42
+
+var j float32
+j = float32(i)
+
+//with conversions have to be careful with the other way from float to int as if we have a decimal point it will round it off
+
+var j float32 = 35.2
+
+//result is 35 which we have lost information from the conversion
+var i int = int(j)
+
+
+if we want to convert an int into a string, to log to a file, then we must know how string work with GO.
+
+//a string is just an alias for a stream of bytes
+//when we ask the application to convert an int to a string, the application will look what ascii character 42 is, and it will come up with an 
+
+var j int = 42
+
+//result is * as ascii character for 42 is *
+var i string = string(j)
+
+#Note for convertions between int and string we need to import a package which is strconv
+
+var i string = strconv.Itoa(j) //Integer to ascii string = Itoa

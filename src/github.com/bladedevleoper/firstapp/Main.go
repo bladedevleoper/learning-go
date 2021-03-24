@@ -3,7 +3,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/bladedevleoper/firstapp/customer"
+	"github.com/bladedevleoper/customer"
 	"strconv"
 )
 

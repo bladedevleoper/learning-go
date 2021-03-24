@@ -1,3 +1,3 @@
-module github.com/bladedevleoper/firstapp/customer
+module github.com/bladedevleoper/firstapp
 
 go 1.16

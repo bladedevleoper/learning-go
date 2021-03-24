@@ -2,11 +2,11 @@
 package main
 
 import (
-	"fmt"
-	"strconv"
+	//"fmt"
+	//"strconv"
 
-	"github.com/bladedevleoper/firstapp/customer"
-
+	//"github.com/bladedevleoper/firstapp/customer"
+	"github.com/bladedevleoper/firstapp/render"
 )
 
 //var person string = "James"
@@ -22,17 +22,18 @@ var (
 
 func main() {
 	//fmt.Println(actorName)
-	var j int = 55
+	//var j int = 55
 	//j = float32(doctorNumber)
 	//var actorName string = "Rebecca Jones"
 	//var name string = "james"
-	var i string = strconv.Itoa(j) //Integer to ascii string
+	//var i string = strconv.Itoa(j) //Integer to ascii string
 	//i := 42
-
-	//name = "James"
+	shopping := []string{"eggs", "milk", "tomatoes", "potatoes"}
+	name := "James"
 	//fmt.Println(number)
 	//fmt.Println(name)
-	fmt.Printf("%v, %T \n", i, i)
+	//fmt.Printf("%v, %T \n", i, i)
 	//fmt.Println()
-	customer.Shopping()
+	//customer.Shopping()
+	render.RenderShoppingCart(name, shopping)
 }

@@ -3,8 +3,10 @@ package main
 
 import (
 	"fmt"
-	"github.com/bladedevleoper/firstapp/customer"
 	"strconv"
+
+	"github.com/bladedevleoper/firstapp/customer"
+
 )
 
 //var person string = "James"
@@ -32,5 +34,5 @@ func main() {
 	//fmt.Println(name)
 	fmt.Printf("%v, %T \n", i, i)
 	//fmt.Println()
-	customer.shopping()
+	customer.Shopping()
 }

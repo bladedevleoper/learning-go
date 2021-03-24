@@ -3,6 +3,7 @@ package customer
 import (
 	"fmt"
 	"strconv"
+
 )
 
 var (
@@ -14,8 +15,8 @@ var (
 	price        float32 = 0
 )
 
-func shopping() {
-
+// capital S == export it so main.go can use it
+func Shopping() {
 	newLine := "\n"
 	customerName = "James Jones"
 	customerID = 12345
